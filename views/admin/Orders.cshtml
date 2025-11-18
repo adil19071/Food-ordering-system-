@@ -17,6 +17,11 @@
     <tbody>
     @foreach (var o in Model)
     {
+        var isPending = o.Status == "Pending";
+        var isCooking = o.Status == "Cooking";
+        var isDelivering = o.Status == "Delivering";
+        var isCompleted = o.Status == "Completed";
+
         <tr>
             <td>@o.Id</td>
             <td>@o.UserName</td>
@@ -36,10 +41,10 @@
                     <input type="hidden" name="id" value="@o.Id" />
 
                     <select name="status" class="form-select form-select-sm">
-                        <option value="Pending" @(o.Status == "Pending" ? "selected" : "")>Pending</option>
-                        <option value="Cooking" @(o.Status == "Cooking" ? "selected" : "")>Cooking</option>
-                        <option value="Delivering" @(o.Status == "Delivering" ? "selected" : "")>Delivering</option>
-                        <option value="Completed" @(o.Status == "Completed" ? "selected" : "")>Completed</option>
+                        <option value="Pending" selected="@(isPending)">Pending</option>
+                        <option value="Cooking" selected="@(isCooking)">Cooking</option>
+                        <option value="Delivering" selected="@(isDelivering)">Delivering</option>
+                        <option value="Completed" selected="@(isCompleted)">Completed</option>
                     </select>
 
                     <button type="submit" class="btn btn-sm btn-primary mt-1">Update</button>
