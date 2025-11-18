@@ -34,12 +34,14 @@
             <td>
                 <form method="post" action="/Admin/UpdateOrderStatus">
                     <input type="hidden" name="id" value="@o.Id" />
+
                     <select name="status" class="form-select form-select-sm">
-                        <option @(o.Status=="Pending"?"selected":"")>Pending</option>
-                        <option @(o.Status=="Cooking"?"selected":"")>Cooking</option>
-                        <option @(o.Status=="Delivering"?"selected":"")>Delivering</option>
-                        <option @(o.Status=="Completed"?"selected":"")>Completed</option>
+                        <option value="Pending" @(o.Status == "Pending" ? "selected" : "")>Pending</option>
+                        <option value="Cooking" @(o.Status == "Cooking" ? "selected" : "")>Cooking</option>
+                        <option value="Delivering" @(o.Status == "Delivering" ? "selected" : "")>Delivering</option>
+                        <option value="Completed" @(o.Status == "Completed" ? "selected" : "")>Completed</option>
                     </select>
+
                     <button type="submit" class="btn btn-sm btn-primary mt-1">Update</button>
                 </form>
             </td>
