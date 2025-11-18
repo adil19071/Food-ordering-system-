@@ -1,0 +1,24 @@
+@model IEnumerable<OnlineFoodOrderingSystem.Models.Restaurant>
+
+<h2>Restaurants</h2>
+<a class="btn btn-success mb-2" href="/Admin/CreateRestaurant">Add Restaurant</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var r in Model)
+    {
+        <tr>
+            <td>@r.Name</td>
+            <td>@r.Address</td>
+            <td>@r.Phone</td>
+        </tr>
+    }
+    </tbody>
+</table>

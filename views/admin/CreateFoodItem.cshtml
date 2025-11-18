@@ -1,0 +1,41 @@
+@model OnlineFoodOrderingSystem.Models.FoodItem
+
+<h2>Create Food Item</h2>
+
+<form asp-action="CreateFoodItem" method="post">
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Restaurant</label>
+        <select asp-for="RestaurantId" class="form-control">
+            @foreach (var r in ViewBag.Restaurants)
+            {
+                <option value="@r.Id">@r.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Category</label>
+        <select asp-for="CategoryId" class="form-control">
+            @foreach (var c in ViewBag.Categories)
+            {
+                <option value="@c.Id">@c.Name</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

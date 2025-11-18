@@ -1,0 +1,31 @@
+<h2>Admin Dashboard</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Restaurants</h5>
+                <p>@ViewBag.RestaurantCount</p>
+                <a class="btn btn-primary" href="/Admin/Restaurants">Manage</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Food Items</h5>
+                <p>@ViewBag.FoodCount</p>
+                <a class="btn btn-primary" href="/Admin/FoodItems">Manage</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Orders</h5>
+                <p>@ViewBag.OrderCount</p>
+                <a class="btn btn-primary" href="/Admin/Orders">View Orders</a>
+            </div>
+        </div>
+    </div>
+</div>

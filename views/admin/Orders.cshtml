@@ -1,0 +1,49 @@
+@model IEnumerable<OnlineFoodOrderingSystem.Models.Order>
+
+<h2>Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Date</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Items</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var o in Model)
+    {
+        <tr>
+            <td>@o.Id</td>
+            <td>@o.UserName</td>
+            <td>@o.OrderDate</td>
+            <td>@o.TotalAmount</td>
+            <td>@o.Status</td>
+            <td>
+                <ul>
+                @foreach (var i in o.Items)
+                {
+                    <li>@i.FoodItem?.Name x @i.Quantity (@i.UnitPrice)</li>
+                }
+                </ul>
+            </td>
+            <td>
+                <form method="post" action="/Admin/UpdateOrderStatus">
+                    <input type="hidden" name="id" value="@o.Id" />
+                    <select name="status" class="form-select form-select-sm">
+                        <option @(o.Status=="Pending"?"selected":"")>Pending</option>
+                        <option @(o.Status=="Cooking"?"selected":"")>Cooking</option>
+                        <option @(o.Status=="Delivering"?"selected":"")>Delivering</option>
+                        <option @(o.Status=="Completed"?"selected":"")>Completed</option>
+                    </select>
+                    <button type="submit" class="btn btn-sm btn-primary mt-1">Update</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
