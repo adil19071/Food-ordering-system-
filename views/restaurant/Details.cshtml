@@ -1,0 +1,31 @@
+@model OnlineFoodOrderingSystem.Models.Restaurant
+
+<h2>@Model.Name</h2>
+<p>@Model.Description</p>
+<p><strong>Address:</strong> @Model.Address</p>
+<p><strong>Phone:</strong> @Model.Phone</p>
+
+<h3>Menu</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.FoodItems)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Category?.Name</td>
+            <td>@item.Price.ToString("C")</td>
+            <td>
+                <a class="btn btn-sm btn-success" href="/Cart/Add/@item.Id">Add to Cart</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
