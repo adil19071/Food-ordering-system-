@@ -1,0 +1,18 @@
+@model IEnumerable<OnlineFoodOrderingSystem.Models.Restaurant>
+
+<h2>Restaurants</h2>
+<div class="row">
+@foreach (var r in Model)
+{
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@r.Name</h5>
+                <p class="card-text">@r.Description</p>
+                <p class="card-text"><small class="text-muted">@r.Address</small></p>
+                <a class="btn btn-primary" href="/Restaurant/Details/@r.Id">View Menu</a>
+            </div>
+        </div>
+    </div>
+}
+</div>
