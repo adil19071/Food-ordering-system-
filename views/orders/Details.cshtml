@@ -1,0 +1,36 @@
+@model OnlineFoodOrderingSystem.Models.Order
+
+<h2>Order #@Model.Id</h2>
+
+<p><strong>User:</strong> @Model.UserName</p>
+<p><strong>Date:</strong> @Model.OrderDate</p>
+<p><strong>Status:</strong> @Model.Status</p>
+
+<h3>Items</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Food</th>
+            <th>Qty</th>
+            <th>Unit Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+    @{
+        decimal total = 0;
+    }
+    @foreach (var i in Model.Items)
+    {
+        var sub = i.UnitPrice * i.Quantity;
+        total += sub;
+        <tr>
+            <td>@i.FoodItem?.Name</td>
+            <td>@i.Quantity</td>
+            <td>@i.UnitPrice</td>
+            <td>@sub</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<h4>Total: @total</h4>
