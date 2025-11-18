@@ -1,0 +1,47 @@
+@model IEnumerable<OnlineFoodOrderingSystem.Models.CartItem>
+
+<h2>Your Cart</h2>
+
+@if (!Model.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Food</th>
+                <th>Restaurant</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @{
+            decimal total = 0;
+        }
+        @foreach (var item in Model)
+        {
+            var sub = item.Price * item.Quantity;
+            total += sub;
+            <tr>
+                <td>@item.FoodName</td>
+                <td>@item.RestaurantName</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>@sub</td>
+                <td>
+                    <a class="btn btn-sm btn-danger" href="/Cart/Remove/@item.FoodItemId">Remove</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <h4>Total: @total</h4>
+    <a class="btn btn-warning" href="/Cart/Clear">Clear Cart</a>
+    <a class="btn btn-success" href="/Cart/Checkout">Checkout</a>
+}
